@@ -1,65 +1,77 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
+  #---------------------------------------------------------------------------------------
+  # public routes
+
+  scope module: :public do
+    root to: 'homes#top'
+    get 'about', to: 'homes#about', as: 'about'
   end
-  namespace :admin do
-    get 'orders/show'
+
+  scope module: :public do
+    resources :items, only: [:index, :show]
   end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'delivery_addresses/index'
-    get 'delivery_addresses/edit'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/confirm'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  # 顧客用
+
   # URL：/customers/sign_in
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: "public/sessions"
+    sessions: 'public/sessions'
   }
 
-  # 管理者用
+  scope module: :public do
+    get 'customers/edit', to: 'customers#edit', as: 'public_customer_edit'
+    get 'customers', to: 'customers#show', as: 'public_customer_show'
+    patch 'customers', to: 'customers#update', as: 'public_customer_update'
+    get 'customers/confirm', to: 'customers#confirm', as: 'public_customer_confirm'
+    patch 'customers/withdraw', to: 'customers#withdraw', as: 'public_customer_withdraw'
+  end
+
+  scope module: :public do
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete 'cart_items/destroy_all', to: 'cart_items#destroy_all'
+  end
+
+  scope module: :public do
+    resources :orders, only: [:new, :create, :index, :show]
+    post 'orders/confirm', to: 'orders#confirm', as: 'confirm_order'
+    get 'orders/complete', to: 'orders#complete', as: 'complete_order'
+  end
+
+  scope module: :public do
+    resources :delivery_addresses, only: [:index, :create, :destroy, :edit, :update]
+  end
+
+  #---------------------------------------------------------------------------------------
+  # admin routes
+
   # URL：/admin/sign_in
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+
+  namespace :admin do
+    root to: 'homes#top'
+  end
+
+  namespace :admin do
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+  end
+
+  namespace :admin do
+    resources :customers, only: [:index, :show, :edit, :update]
+  end
+
+  namespace :admin do
+    resources :orders, only: [:show, :update]
+  end
+
+  namespace :admin do
+    resources :order_items, only: [:update]
+  end
+
+  namespace :admin do
+    resources :genres, only: [:index, :create, :edit, :update]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
