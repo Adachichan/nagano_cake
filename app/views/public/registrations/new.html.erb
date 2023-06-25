@@ -1,29 +1,132 @@
-<h2>Sign up</h2>
+<div class = "container">
+  <div class = "row">
+    <div class = "pt-4 px-5 px-sm-0">
+      <h4>
+        <span class = "text-dark bg-light">
+          &ensp;新規会員登録&ensp;
+        </span>
+      </h4>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+      <%= form_with model: @customer, url: customer_registration_path do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <table class = "table table-borderless">
+
+          <tr>
+            <td>名前</td>
+            <td>(性)</td>
+            <td>
+              <div class = "field">
+                <%= f.text_field :last_name, :size=>"30" %>
+              </div>
+            </td>
+            <td>(名)</td>
+            <td>
+              <div class = "field">
+                <%= f.text_field :first_name, :size=>"30" %>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>フリガナ</td>
+            <td>(セイ)</td>
+            <td>
+              <div class = "field">
+                <%= f.text_field :last_name_kana, :size=>"30" %>
+              </div>
+            </td>
+            <td>(メイ)</td>
+            <td>
+              <div class = "field">
+                <%= f.text_field :first_name_kana, :size=>"30" %>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>メールアドレス</td>
+            <td></td>
+            <td>
+              <div class = "field">
+                <%= f.text_field :email, :size=>"30" %>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>郵便番号(ハイフンなし)</td>
+            <td></td>
+            <td>
+              <div class = "field">
+                <%= f.text_field :postal_code, :size=>"30" %>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>住所</td>
+            <td></td>
+            <td colspan = "3">
+              <div class = "field">
+                <%= f.text_field :telephone_number, style: "width:100%" %>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>電話番号(ハイフンなし)</td>
+            <td></td>
+            <td>
+              <div class = "field">
+                <%= f.text_field :telephone_number, :size=>"30" %>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>パスワード(6文字以上)</td>
+            <td></td>
+            <td>
+              <div class="field">
+                <%= f.password_field :password, autocomplete: "new-password", :size=>"30" %>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>パスワード(確認用)</td>
+            <td></td>
+            <td>
+              <div class="field">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"30" %>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <%= f.submit "　　新規登録　　", class: "btn btn-success" %>
+            </td>
+          </tr>
+        </table>
+
+      <% end %>
+
+      <h4 class = "mt-3">
+        <span class = "text-dark bg-light">
+          &ensp;既に登録済みの方&ensp;
+        </span>
+      </h4>
+
+      <div class = "mt-3 ml-5">
+        <span>
+          <%= render "admin/shared/links" %>
+          &ensp;からログインしてください。
+        </span>
+      </div>
+
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>
