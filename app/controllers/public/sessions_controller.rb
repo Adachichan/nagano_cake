@@ -27,7 +27,7 @@ class Public::SessionsController < Devise::SessionsController
 
     # Public_sign_in
     def after_sign_in_path_for(resource)
-      public_customer_show_path
+      root_path
     end
 
     # Public_sign_out

@@ -62,6 +62,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # Customer_sign_up
+  def after_sign_up_path_for(resource)
+    public_customer_show_path
+  end
+
   protected
 
   def configure_permitted_parameters
