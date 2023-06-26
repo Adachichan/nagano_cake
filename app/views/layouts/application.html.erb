@@ -39,6 +39,11 @@
               </li>
 
             <% else %>
+              <li class = "nav-item">
+                <%= link_to new_customer_session_path do %>
+                  <button class="btn btn-outline-secondary me-2" type="button">&ensp;ログイン&ensp;</button>
+                <% end %>
+              </li>
 
             <% end %>
           </ul>
