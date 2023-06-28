@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    get 'customers/edit', to: 'customers#edit', as: 'public_customer_edit'
-    get 'customers', to: 'customers#show', as: 'public_customer_show'
-    patch 'customers', to: 'customers#update', as: 'public_customer_update'
+    get 'customers/my_page', to: 'customers#show', as: 'public_customer_show'
+    get 'customers/information/edit', to: 'customers#edit', as: 'public_customer_edit'
+    patch 'customers/information', to: 'customers#update', as: 'public_customer_update'
     get 'customers/confirm', to: 'customers#confirm', as: 'public_customer_confirm'
     patch 'customers/withdraw', to: 'customers#withdraw', as: 'public_customer_withdraw'
   end
