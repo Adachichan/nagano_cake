@@ -1,20 +1,24 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = current_customer
+    @customer = Customer.find(current_customer.id)
   end
 
   def edit
-    @customer = current_customer
+    @customer = Customer.find(current_customer.id)
   end
 
   def update
-    @customer = current_customer
+    @customer = Customer.find(current_customer.id)
     @customer.update(customer_params)
     redirect_to public_customer_show_path
   end
 
   def withdraw
+    @customer = Customer.find(current_customer.id)
+    @customer.is_deleted = true
+    @customer.update(is_deleted: true)
+    redirect_to root_path
   end
 
   def confirm
