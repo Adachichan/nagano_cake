@@ -9,6 +9,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
+    @customer = current_customer
+    @customer.update(customer_params)
     redirect_to public_customer_show_path
   end
 
