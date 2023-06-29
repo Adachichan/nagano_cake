@@ -16,7 +16,6 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer = Customer.find(current_customer.id)
-    @customer.is_deleted = true
     @customer.update(is_deleted: true)
     redirect_to root_path
   end
