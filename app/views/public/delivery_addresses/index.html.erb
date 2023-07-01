@@ -57,10 +57,10 @@
           </tr>
         </thead>
 
-        <% @delivery_destinations.each do |delivery_destination| %>
+        <tbody>
+          <% @delivery_destinations.each do |delivery_destination| %>
 
-          <tbody>
-            <tr>
+            <tr class>
               <td class = "border border-dark align-middle" style = "width: 100px">
                   <%= delivery_destination.postal_code %>
               </td>
@@ -75,9 +75,9 @@
                 <%= link_to " 削除する ", delivery_address_path(delivery_destination.id), method: :delete, class: "btn btn-danger form-control col-5 ml-2 p-1", style: "height: 35px" %>
               </td>
             </tr>
-          </tbody>
 
-        <% end %>
+          <% end %>
+        </tbody>
 
      </table>
   </div>
