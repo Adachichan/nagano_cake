@@ -1,2 +1,60 @@
-<h1>Admin::Genres#index</h1>
-<p>Find me in app/views/admin/genres/index.html.erb</p>
+<div class = "container">
+
+  <div class = "h4 mt-4 bg-light text-black text-center" style = "width:260px">
+    &ensp;ジャンル一覧・追加&ensp;
+  </div>
+
+</div>
+
+<div class = "container ml-5">
+  <div class = "mt-5 pt-3 mx-sm-0">
+
+    <%= form_with model: @genre_registration, url: admin_genres_path do |f| %>
+
+      <table class = "table table-borderless" style= "width: 700px">
+
+        <tr>
+          <td class = "pt-0 align-middle" style = "width: 150px">ジャンル名</td>
+          <td class = "pt-0 pr-4" style = "width 350px">
+            <%= f.text_field :name, class: "form-control border-dark" %>
+          </td>
+          <td class = "pt-0 pl-5" style = "width: 200px">
+            <%= f.submit "　 新規登録 　", class: "btn btn-success form-control font-weight-bold col-12" %>
+          </td>
+
+      </table>
+
+    <% end %>
+
+  </div>
+
+  <div class = "row mt-5" style = "font-size:0.9rem">
+    <table class = "table table-bordered" style = "width: 420px">
+
+      <thead class =  "bg-light text-center">
+        <tr>
+          <th style = "width: 270px">ジャンル</th>
+          <th style = "width: 150px"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @genre_list.each do |genre| %>
+
+          <tr class>
+            <td class = "align-middle" style = "width: 270px">
+              <%= genre.name %>
+            </td>
+            <td class = "align-middle" style = "width: 150px">
+              <%= link_to " 編集する ", edit_admin_genre_path(genre.id), class: "btn btn-success form-control col-11 ml-2 p-1", style: "height: 35px" %>
+            </td>
+          </tr>
+
+        <% end %>
+      </tbody>
+
+    </table>
+  </div>
+</div>
+
+

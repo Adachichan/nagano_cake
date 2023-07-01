@@ -2,7 +2,8 @@ class Public::DeliveryAddressesController < ApplicationController
 
   def index
     @delivery_registration = DeliveryAddress.new
-    @delivery_destinations = DeliveryAddress.where(customer_id: current_customer.id)
+    # @delivery_destination_list = DeliveryAddress.where(customer_id: current_customer.id)
+    @delivery_destination_list = current_customer.delivery_addresses
   end
 
   def create

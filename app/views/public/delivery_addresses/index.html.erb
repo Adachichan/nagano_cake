@@ -45,41 +45,41 @@
 </div>
 
 <div class = "container ml-3">
-   <div class = "row ml-3 mt-4" style = "font-size:0.9rem">
-     <table class = "table table-bordered" style = "width: 900px">
+  <div class = "row ml-3 mt-4" style = "font-size:0.9rem">
+    <table class = "table table-bordered" style = "width: 900px">
 
-        <thead class =  "bg-light">
-          <tr>
-            <th class = "border border-dark" style = "width: 100px">郵便番号</th>
-            <th class = "border border-dark" style = "width: 400px">住所</th>
-            <th class = "border border-dark" style = "width: 150px">宛名</th>
-            <th class = "border border-dark" style = "width: 250px"></th>
+      <thead class =  "bg-light">
+        <tr>
+          <th class = "border border-dark" style = "width: 100px">郵便番号</th>
+          <th class = "border border-dark" style = "width: 400px">住所</th>
+          <th class = "border border-dark" style = "width: 150px">宛名</th>
+          <th class = "border border-dark" style = "width: 250px"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @delivery_destination_list.each do |delivery_destination| %>
+
+          <tr class>
+            <td class = "border border-dark align-middle" style = "width: 100px">
+                <%= delivery_destination.postal_code %>
+            </td>
+            <td class = "border border-dark align-middle" style = "width: 400px">
+              <%= delivery_destination.address %>
+            </td>
+            <td class = "border border-dark align-middle" style = "width: 150px">
+              <%= delivery_destination.name %>
+            </td>
+            <td class = "border border-dark align-middle" style = "width: 250px">
+              <%= link_to " 編集する ", edit_delivery_address_path(delivery_destination.id), class: "btn btn-success form-control col-5 ml-2 p-1", style: "height: 35px" %>
+              <%= link_to " 削除する ", delivery_address_path(delivery_destination.id), method: :delete, class: "btn btn-danger form-control col-5 ml-2 p-1", style: "height: 35px" %>
+            </td>
           </tr>
-        </thead>
 
-        <tbody>
-          <% @delivery_destinations.each do |delivery_destination| %>
+        <% end %>
+      </tbody>
 
-            <tr class>
-              <td class = "border border-dark align-middle" style = "width: 100px">
-                  <%= delivery_destination.postal_code %>
-              </td>
-              <td class = "border border-dark align-middle" style = "width: 400px">
-                <%= delivery_destination.address %>
-              </td>
-              <td class = "border border-dark align-middle" style = "width: 150px">
-                <%= delivery_destination.name %>
-              </td>
-              <td class = "border border-dark align-middle" style = "width: 250px">
-                <%= link_to " 編集する ", edit_delivery_address_path(delivery_destination.id), class: "btn btn-success form-control col-5 ml-2 p-1", style: "height: 35px" %>
-                <%= link_to " 削除する ", delivery_address_path(delivery_destination.id), method: :delete, class: "btn btn-danger form-control col-5 ml-2 p-1", style: "height: 35px" %>
-              </td>
-            </tr>
-
-          <% end %>
-        </tbody>
-
-     </table>
+    </table>
   </div>
 </div>
 
