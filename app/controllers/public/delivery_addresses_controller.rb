@@ -19,9 +19,13 @@ class Public::DeliveryAddressesController < ApplicationController
   end
 
   def edit
+    @delivery_registration = DeliveryAddress.find(params[:id])
   end
 
   def update
+    @delivery_registration = DeliveryAddress.find(params[:id])
+    @delivery_registration.update(delivery_registration_params)
+    redirect_to delivery_addresses_path
   end
 
   # 配送先登録のストロングパラメータ
