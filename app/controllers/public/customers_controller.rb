@@ -2,6 +2,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(current_customer.id)
+    @customer.update(is_deleted: false)
   end
 
   def edit

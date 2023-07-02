@@ -1,1 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
+
+// ページネーション全体
+.pagination{
+  justify-content: center;
+}
+
+// ページネーションのリンク文字
+.pagination a{
+  margin: 0px 5px;
+}

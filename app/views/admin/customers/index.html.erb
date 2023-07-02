@@ -1,2 +1,59 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<div class = "container">
+
+  <div class = "h4 mt-4 bg-light text-black text-center" style = "width:150px">
+    &ensp;会員一覧&ensp;
+  </div>
+
+  <div class = "row justify-content-center mt-4" style = "font-size:0.9rem">
+    <table class = "table" style = "width: 750px">
+
+      <thead class =  "bg-light">
+        <tr>
+          <th class = "p-2" style = "width: 100px">会員ID</th>
+          <th class = "p-2" style = "width: 200px">氏名</th>
+          <th class = "p-2" style = "width: 250px">メールアドレス</th>
+          <th class = "p-2" style = "width: 200px">ステータス</th>
+        </tr>
+      </thead>
+
+       <tbody>
+         <% @customer_list.each do |customer| %>
+
+          <tr class = "border-bottom">
+            <td class = "align-middle" style = "width: 100px">
+              <%= customer.id %>
+            </td>
+            <td class = "align-middle" style = "width: 200px">
+              <%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id), class: "text-dark" %>
+            </td>
+            <td class = "align-middle" style = "width: 250px">
+              <%= customer.email %>
+            </td>
+            <td class = "align-middle" style = "width: 200px">
+
+              <!-- 退会時の処理 -->
+              <% if customer.is_deleted == true %>
+                <p class = "font-weight-bold m-0" style = "color: #CCCCCC">退会</p>
+
+              <!-- 退会していない時の処理 -->
+              <% else %>
+                <p class = "font-weight-bold text-success m-0">有効</p>
+
+              <% end %>
+            </td>
+          </tr>
+
+        <% end %>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td class = "align-middle"  colspan = "4">
+            <%= paginate @customer_list %>
+          </td>
+        </tr>
+      </tfoot>
+
+    </table>
+  </div>
+</div>
