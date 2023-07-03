@@ -19,7 +19,7 @@
             <%= f.text_field :name, class: "form-control border-dark" %>
           </td>
           <td class = "pt-0 pl-5" style = "width: 200px">
-            <%= f.submit "　 新規登録 　", class: "btn btn-success form-control font-weight-bold col-12" %>
+            <%= f.submit "新規登録", class: "btn btn-success form-control font-weight-bold col-12" %>
           </td>
 
       </table>
@@ -46,7 +46,7 @@
               <%= genre.name %>
             </td>
             <td class = "align-middle" style = "width: 150px">
-              <%= link_to " 編集する ", edit_admin_genre_path(genre.id), class: "btn btn-success form-control col-11 ml-2 p-1", style: "height: 35px" %>
+              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success form-control col-11 ml-2 p-1", style: "height: 35px" %>
             </td>
           </tr>
 

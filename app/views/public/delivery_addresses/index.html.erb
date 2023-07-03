@@ -32,9 +32,9 @@
           <td class = "pt-0" style = "width 350px">
             <%= f.text_field :name, class: "form-control border-dark" %>
           </td>
-          <td class = "pt-0" style = "width: 350px"></td>
-          <td class = "pt-0" style = "width: 130px">
-            <%= f.submit "　 新規登録 　", class: "btn btn-success form-control font-weight-bold col-12" %>
+          <td class = "pt-0" style = "width: 330px"></td>
+          <td class = "pt-0" style = "width: 150px">
+            <%= f.submit "新規登録", class: "btn btn-success form-control font-weight-bold col-12" %>
           </td>
 
       </table>
@@ -71,8 +71,8 @@
               <%= delivery_destination.name %>
             </td>
             <td class = "border border-dark align-middle" style = "width: 250px">
-              <%= link_to " 編集する ", edit_delivery_address_path(delivery_destination.id), class: "btn btn-success form-control col-5 ml-2 p-1", style: "height: 35px" %>
-              <%= link_to " 削除する ", delivery_address_path(delivery_destination.id), method: :delete, class: "btn btn-danger form-control col-5 ml-2 p-1", style: "height: 35px" %>
+              <%= link_to "編集する", edit_delivery_address_path(delivery_destination.id), class: "btn btn-success form-control col-5 ml-2 p-1", style: "height: 35px" %>
+              <%= link_to "削除する", delivery_address_path(delivery_destination.id), method: :delete, class: "btn btn-danger form-control col-5 ml-2 p-1", style: "height: 35px" %>
             </td>
           </tr>
 

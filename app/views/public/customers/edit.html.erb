@@ -31,46 +31,46 @@
           </td>
           <td style = "width: 10px"></td>
           <td class = "pt-0" style = "width: 300px">
-              <%= f.text_field :first_name_kana, class: "form-control border-dark" %>
+            <%= f.text_field :first_name_kana, class: "form-control border-dark" %>
           </td>
         </tr>
 
         <tr>
           <td class = "pt-0 align-middle" style = "width: 200px">郵便番号</td>
           <td class = "pt-0" style = "width: 300px">
-              <%= f.text_field :postal_code, class: "form-control border-dark" %>
+            <%= f.text_field :postal_code, class: "form-control border-dark" %>
           </td>
         </tr>
 
         <tr>
           <td class = "pt-0 align-middle" style = "width: 200px">住所</td>
           <td class = "pt-0" colspan = "4">
-              <%= f.text_field :address, class: "form-control border-dark" %>
+            <%= f.text_field :address, class: "form-control border-dark" %>
           </td>
         </tr>
 
         <tr>
           <td class = "pt-0 align-middle" style= "width: 200px">電話番号</td>
           <td class = "pt-0" style = "width: 300px">
-              <%= f.text_field :telephone_number, class: "form-control border-dark" %>
+            <%= f.text_field :telephone_number, class: "form-control border-dark" %>
           </td>
         </tr>
 
         <tr>
           <td class = "pt-0 align-middle" style= "width: 200px">メールアドレス</td>
           <td class = "pt-0" style = "width: 300px">
-              <%= f.text_field :email, class: "form-control border-dark" %>
+            <%= f.text_field :email, class: "form-control border-dark" %>
           </td>
         </tr>
 
         <tr>
           <td class = "pt-4" style = "width: 200px"></td>
           <td class = "pt-4" colspan = "2">
-            <%= f.submit "　　編集内容を保存　　", class: "btn btn-success form-control col-12" %>
+            <%= f.submit "編集内容を保存", class: "btn btn-success form-control col-12" %>
           </td>
           <td style = "width: 300px"></td>
           <td class = "pt-4" style = "width: 160px">
-            <%= link_to "　退会する　", public_customer_confirm_path, class: "btn btn-danger form-control col-12" %>
+            <%= link_to "退会する", public_customer_confirm_path, class: "btn btn-danger form-control col-12" %>
           </td>
         </tr>
 
