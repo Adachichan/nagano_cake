@@ -1,2 +1,77 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class = "container">
+
+  <div class = "h4 mt-4 bg-light text-black text-center" style = "width:260px">
+    &ensp;商品新規登録&ensp;
+  </div>
+
+  <div class = "item-registration-input-table">
+
+    <%= form_with model: @item_registration, url: admin_items_path do |f| %>
+
+      <table class = "table table-borderless" style = "width: 530px">
+
+        <tr>
+          <td class = "align-middle" style = "width: 150px">商品画像</td>
+          <td style = "width: 350px">
+            <div class="custom-file">
+              <%= f.file_field :image, accept: "image/*" %>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class = "pt-0 align-middle" style = "width: 150px">商品名</td>
+          <td class = "pt-0" style = "width: 350px">
+            <%= f.text_field :name, class: "form-control border-dark" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td class = "pt-2 align-top" style = "width: 150px">商品説明</td>
+          <td class = "pt-0" style = "width: 350px">
+            <%= f.text_area :introduction, class: "form-control border-dark", rows: 6 %>
+          </td>
+        </tr>
+
+        <tr>
+          <td class = "pt-0 align-middle" style = "width: 150px">ジャンル</td>
+          <td class = "pt-0 " style = "width: 350px">
+            <%= f.collection_select :genre_id, @genre_list, :id, :name, prompt: "--選択してください--　　　" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td class = "pt-0 align-middle" style = "width: 150px">税抜価格</td>
+          <td class = "pt-0" style = "width: 350px">
+            <%= f.text_field :price, class: "form-control border-dark" %>
+          </td>
+          <td class = "pt-0 pl-0 align-middle" style = "width: 30px">円</td>
+        </tr>
+
+        <tr>
+          <td class = "pt-2" style = "width: 200px">販売ステータス</td>
+          <td class = "pt-2" style = "width: 350px">
+
+            <%= f.radio_button :is_sold, :false, checked: "checked" %>
+            <%= f.label :is_sold, "販売中" %>
+            <%= f.radio_button :is_sold, :true, class: "ml-4" %>
+            <%= f.label :is_sold, "販売停止中" %>
+
+          </td>
+        </tr>
+        <tr>
+          <td class = "pt-4" style = "width: 200px"></td>
+          <td class = "pt-2 text-center" colspan = "3">
+            <%= f.submit "新規登録", class: "btn btn-success form-control font-weight-bold col-5", style: "height: 40px" %>
+          </td>
+        </tr>
+
+      </table>
+
+    <% end %>
+
+  </div>
+</div>
+
+
+
