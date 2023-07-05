@@ -5,18 +5,18 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
-    @item_registration = Item.new
+    @item = Item.new
     @genre_list = Genre.all
   end
 
   def create
-    @item_registration = Item.new(item_registration_params)
-    @item_registration.save
-    redirect_to admin_item_path(@item_registration.id)
+    @item = Item.new(item_registration_params)
+    @item.save
+    redirect_to admin_item_path(@item.id)
   end
 
   def show
-    
+    @item = Item.find(params[:id])
   end
 
   def edit
