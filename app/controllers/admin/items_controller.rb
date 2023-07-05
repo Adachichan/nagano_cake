@@ -1,6 +1,7 @@
 class Admin::ItemsController < ApplicationController
 
   def index
+    @item_list = Item.page(params[:page])
   end
 
   def new
@@ -15,6 +16,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    
   end
 
   def edit
@@ -22,9 +24,9 @@ class Admin::ItemsController < ApplicationController
 
   def update
   end
-  
+
   private
-  
+
   def item_registration_params
     params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :is_sold)
   end
