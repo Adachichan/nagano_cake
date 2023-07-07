@@ -8,40 +8,40 @@
 
     <%= form_with model: @item, url: admin_items_path do |f| %>
 
-      <table class = "table table-borderless" style = "width: 530px">
+      <table class = "table table-borderless" style = "width: 550px">
 
         <tr>
-          <td class = "align-middle" style = "width: 150px">商品画像</td>
+          <td class = "align-middle" style = "width: 170px">商品画像</td>
           <td style = "width: 350px">
-            <div class="custom-file">
+            <div class = "custom-file" style = "height: 0px">
               <%= f.file_field :item_image, accept: "image/*" %>
             </div>
           </td>
         </tr>
 
         <tr>
-          <td class = "pt-0 align-middle" style = "width: 150px">商品名</td>
-          <td class = "pt-0" style = "width: 350px">
+          <td class = "pt-1 align-middle" style = "width: 170px">商品名</td>
+          <td class = "pt-1" style = "width: 350px">
             <%= f.text_field :name, class: "form-control border-dark" %>
           </td>
         </tr>
 
         <tr>
-          <td class = "pt-2 align-top" style = "width: 150px">商品説明</td>
+          <td class = "pt-2 align-top" style = "width: 170px">商品説明</td>
           <td class = "pt-0" style = "width: 350px">
             <%= f.text_area :introduction, class: "form-control border-dark", rows: 6 %>
           </td>
         </tr>
 
         <tr>
-          <td class = "pt-0 align-middle" style = "width: 150px">ジャンル</td>
-          <td class = "pt-0 " style = "width: 350px">
-            <%= f.collection_select :genre_id, @genre_list, :id, :name, prompt: "--選択してください--　　　" %>
+          <td class = "pt-0 align-middle" style = "width: 170px">ジャンル</td>
+          <td class = "pt-0 item-genre-select-design" style = "width: 350px">
+            <%= f.collection_select :genre_id, @genre_list, :id, :name, prompt: "--選択してください--" %>
           </td>
         </tr>
 
         <tr>
-          <td class = "pt-0 align-middle" style = "width: 150px">税抜価格</td>
+          <td class = "pt-0 align-middle" style = "width: 170px">税抜価格</td>
           <td class = "pt-0" style = "width: 350px">
             <%= f.text_field :price, class: "form-control border-dark" %>
           </td>
@@ -49,7 +49,7 @@
         </tr>
 
         <tr>
-          <td class = "pt-2" style = "width: 200px">販売ステータス</td>
+          <td class = "pt-2" style = "width: 170px">販売ステータス</td>
           <td class = "pt-2" style = "width: 350px">
 
             <%= f.radio_button :is_sold, :false, checked: "checked" %>
@@ -60,7 +60,7 @@
           </td>
         </tr>
         <tr>
-          <td class = "pt-4" style = "width: 200px"></td>
+          <td class = "pt-4" style = "width: 170px"></td>
           <td class = "pt-2 text-center" colspan = "3">
             <%= f.submit "新規登録", class: "btn btn-success form-control font-weight-bold col-5", style: "height: 40px" %>
           </td>
@@ -72,6 +72,3 @@
 
   </div>
 </div>
-
-
-

@@ -10,7 +10,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_registration_params)
+    @item = Item.new(item_params)
     @item.save
     redirect_to admin_item_path(@item.id)
   end
@@ -20,14 +20,20 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @genre_list = Genre.all
+    @genre = @item.genre.name
   end
 
   def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    redirect_to admin_item_path(@item.id)
   end
 
   private
 
-  def item_registration_params
+  def item_params
     params.require(:item).permit(:item_image, :name, :introduction, :genre_id, :price, :is_sold)
   end
 

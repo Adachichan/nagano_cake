@@ -1,2 +1,83 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<div class = "container">
+
+  <div class = "h4 mt-4 bg-light text-black text-center" style = "width:260px">
+    &ensp;商品編集&ensp;
+  </div>
+
+  <div class = "item-registration-input-table">
+
+    <%= form_with model: @item, url: admin_item_path do |f| %>
+
+      <table class = "table table-borderless" style = "width: 550px">
+
+        <tr>
+          <td class = "align-middle" style = "width: 170px">商品画像</td>
+          <td style = "width: 350px">
+            <div class = "custom-file" style = "height: 0px">
+              <%= f.file_field :item_image, accept: "image/*" %>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class = "pt-1 align-middle" style = "width: 170px">商品名</td>
+          <td class = "pt-1" style = "width: 350px">
+            <%= f.text_field :name, class: "form-control border-dark" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td class = "pt-2 align-top" style = "width: 170px">商品説明</td>
+          <td class = "pt-0" style = "width: 350px">
+            <%= f.text_area :introduction, class: "form-control border-dark", rows: 6 %>
+          </td>
+        </tr>
+
+        <tr>
+          <td class = "pt-0 align-middle" style = "width: 170px">ジャンル</td>
+          <td class = "pt-0 item-genre-select-design" style = "width: 350px">
+            <%= f.collection_select :genre_id, @genre_list, :id, :name, prompt: @genre %>
+          </td>
+        </tr>
+
+        <tr>
+          <td class = "pt-0 align-middle" style = "width: 170px">税抜価格</td>
+          <td class = "pt-0" style = "width: 350px">
+            <%= f.text_field :price, class: "form-control border-dark" %>
+          </td>
+          <td class = "pt-0 pl-0 align-middle" style = "width: 30px">円</td>
+        </tr>
+
+        <tr>
+          <td class = "pt-2" style = "width: 170px">販売ステータス</td>
+          <td class = "pt-2" style = "width: 350px">
+
+            <% if @item.is_sold == true %>
+              <%= f.radio_button :is_sold, :false %>
+              <%= f.label :is_sold, "販売中" %>
+              <%= f.radio_button :is_sold, :true, class: "ml-4", checked: "checked" %>
+              <%= f.label :is_sold, "販売停止中" %>
+
+            <% else %>
+              <%= f.radio_button :is_sold, :false, checked: "checked" %>
+              <%= f.label :is_sold, "販売中" %>
+              <%= f.radio_button :is_sold, :true, class: "ml-4" %>
+              <%= f.label :is_sold, "販売停止中" %>
+
+            <% end %>
+
+          </td>
+        </tr>
+        <tr>
+          <td class = "pt-4" style = "width: 170px"></td>
+          <td class = "pt-2 text-center" colspan = "3">
+            <%= f.submit "変更を保存", class: "btn btn-success form-control font-weight-bold col-6", style: "height: 40px" %>
+          </td>
+        </tr>
+
+      </table>
+
+    <% end %>
+
+  </div>
+</div>
