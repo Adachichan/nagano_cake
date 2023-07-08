@@ -2,23 +2,36 @@
 
   <div class = "row">
     <div class = "col-2">
-      今でしょ！
+      ジャンル検索（仮）
     </div>
 
     <div class = "col-10">
 
-      <div class = "row">
+      <div class = "h3 mt-4 text-black font-weight-bold" style = "width:260px">
+        商品一覧(全<%= @item_count %>件)
+      </div>
 
+      <div class = "row">
         <% @item_list.each do |item| %>
-          <div class = "col-3">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_item_image("200x200!") %>
-            <% end %>
+
+          <div class = "col-3 mt-4">
+            <div>
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_item_image("200x150!") %>
+              <% end %>
+            </div>
+            <div class = "mt-2 font-weight-bold">
+              <%= item.name %>
+            </div>
+            <div class = "mt-2 font-weight-bold">
+              <%= number_to_currency((item.price + item.price * 0.1).round, unit: "¥", strip_insignificant_zeros: true) %>
+            </div>
           </div>
+
         <% end %>
       </div>
 
-      <div>
+      <div class = "mt-5">
         <%= paginate @item_list %>
       </div>
 
