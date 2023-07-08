@@ -7,72 +7,71 @@
 </div>
 
 
-<div class = "container ml-0">
-  <div class = "row mt-5">
+<div class = "container ml-5 pl-5">
+  <div class = "row mt-5 ml-5 pl-5">
     <div class = "col-1"></div>
 
-    <div class = "col-4">
+    <div class = "col-5">
       <%= image_tag @item.get_item_image("300") %>
     </div>
 
-    <div class = "col-7">
-      <table class = "table table-borderless" style = "width: 530px">
+    <div class = "col-6">
 
-        <tr>
-          <td class = "py-2" style = "width: 150px; font-size:0.9rem">商品名</td>
-          <td class = "py-2" style = "width: 350px; font-size:1.0rem">
-            <%= @item.name %>
-          </td>
-        </tr>
+      <div class = "d-flex align-items-center">
+        <div class = "mt-3" style = "width: 150px; font-size:0.9rem">商品名</div>
+        <div class = "mt-3" style = "width: 350px; font-size:1.0rem">
+          <%= @item.name %>
+        </div>
+      </div>
 
-        <tr>
-          <td class = "py-2" style = "width: 150px; font-size:0.9rem">商品説明</td>
-          <td class = "py-2" style = "width: 350px; font-size:1.0rem">
-            <%= @item.introduction %>
-          </td>
-        </tr>
+      <div class = "d-flex">
+        <div class = "mt-3 pt-1 align-top" style = "width: 150px; font-size:0.9rem">商品説明</div>
+        <div class = "mt-3 align-center" style = "width: 350px; font-size:1.0rem">
+          <%= @item.introduction %>
+        </div>
+      </div>
 
-        <tr>
-          <td class = "py-2" style = "width: 150px; font-size:0.9rem">ジャンル</td>
-          <td class = "py-2" style = "width: 350px; font-size:1.0rem">
-            <%= @item.genre.name %>
-          </td>
-        </tr>
+      <div class = "d-flex align-items-center">
+        <div class = "mt-3" style = "width: 150px; font-size:0.9rem">ジャンル</div>
+        <div class = "mt-3" style = "width: 350px; font-size:1.0rem">
+          <%= @item.genre.name %>
+        </div>
+      </div>
 
-        <tr>
-          <td class = "py-2" style = "width: 150px; font-size:0.9rem">
-            税込価格</br>
-            (税抜価格)
-          </td>
-          <td class = "py-2" style = "width: 350px; font-size:1.0rem">
-            <%= (@item.price + @item.price * 0.1).round.to_s(:delimited) %>&nbsp;(<%= @item.price.round.to_s(:delimited) %>)&nbsp;円
-          </td>
-        </tr>
+      <div class = "d-flex align-items-center">
+        <div class = "mt-3" style = "width: 150px; font-size:0.9rem">
+          税込価格</br>
+          (税抜価格)
+        </div>
+        <div class = "mt-3" style = "width: 350px; font-size:1.0rem">
+          <%= (@item.price + @item.price * 0.1).round.to_s(:delimited) %>&nbsp;(<%= @item.price.round.to_s(:delimited) %>)&nbsp;円
+        </div>
+      </div>
 
-        <tr>
-          <td class = "py-2" style = "width: 150px; font-size:0.9rem">販売ステータス</td>
-          <td class = "py-2" style = "width: 350px; font-size:1.0rem">
+      <div class = "d-flex align-items-center">
+        <div class = "mt-3" style = "width: 150px; font-size:0.9rem">販売ステータス</div>
+        <div class = "mt-3" style = "width: 350px; font-size:1.0rem">
 
-            <!-- 販売停止中の処理 -->
-            <% if @item.is_sold == true %>
-              <p class = "font-weight-bold m-0" style = "color: #CCCCCC">販売停止中</p>
+          <!-- 販売停止中の処理 -->
+          <% if @item.is_sold == true %>
+            <p class = "font-weight-bold m-0" style = "color: #CCCCCC">販売停止中</p>
 
-            <!-- 販売中の処理 -->
-            <% else %>
-              <p class = "font-weight-bold text-success m-0">販売中</p>
+          <!-- 販売中の処理 -->
+          <% else %>
+            <p class = "font-weight-bold text-success m-0">販売中</p>
 
-            <% end %>
+          <% end %>
 
-          </td>
-        </tr>
+        </div>
+      </div>
 
-        <tr>
-          <td class = "pt-4 text-center" colspan = "2">
-            <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success form-control font-weight-bold col-3", style: "height: 40px" %>
-          </td>
-        </tr>
+      <div class = "d-flex align-items-center">
+        <div class = "mt-3" style = "width: 150px">
+        <div class = "mt-3 text-center" style = "width: 350px">
+          <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success form-control font-weight-bold col-5", style: "height: 40px" %>
+        </div>
+      </div>
 
-      </table>
     </div>
   </div>
 </div>

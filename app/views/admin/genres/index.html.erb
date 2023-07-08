@@ -11,50 +11,39 @@
 
     <%= form_with model: @genre, url: admin_genres_path do |f| %>
 
-      <table class = "table table-borderless" style= "width: 700px">
-
-        <tr>
-          <td class = "pt-0 align-middle" style = "width: 150px">ジャンル名</td>
-          <td class = "pt-0 pr-4" style = "width 350px">
-            <%= f.text_field :name, class: "form-control border-dark" %>
-          </td>
-          <td class = "pt-0 pl-5" style = "width: 200px">
-            <%= f.submit "新規登録", class: "btn btn-success form-control font-weight-bold col-12" %>
-          </td>
-
-      </table>
+      <div class = "d-flex align-items-center">
+        <div style = "width: 150px">ジャンル名</div>
+        <div class = "mr-4" style = "width: 350px">
+          <%= f.text_field :name, class: "form-control border-dark" %>
+        </div>
+        <div class = "ml-5" style = "width: 150px">
+          <%= f.submit "新規登録", class: "btn btn-success form-control font-weight-bold col-12" %>
+        </div>
+      </div>
 
     <% end %>
 
   </div>
 
-  <div class = "row mt-5" style = "font-size:0.9rem">
-    <table class = "table" style = "width: 420px">
+  <div class = "mt-5" style = "width: 420px; font-size:0.9rem">
 
-      <thead class =  "bg-light text-center">
-        <tr>
-          <th style = "width: 270px">ジャンル</th>
-          <th style = "width: 150px"></th>
-        </tr>
-      </thead>
+    <div class = "d-flex align-items-center bg-light border-top border-bottom" style = "height: 40px">
+      <div class = "text-center font-weight-bold" style = "width: 270px">ジャンル</div>
+      <div style = "width: 150px; height: 30px"></div>
+    </div>
 
-      <tbody class = "border-bottom">
-        <% @genre_list.each do |genre| %>
+    <div>
+      <% @genre_list.each do |genre| %>
+        <div class = "d-flex align-items-center border-bottom" style = "height: 60px">
+          <div style = "width: 270px">
+            <%= genre.name %>
+          </div>
+          <div style = "width: 150px">
+            <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success form-control col-11 ml-2 p-1", style: "height: 35px" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-          <tr class>
-            <td class = "align-middle" style = "width: 270px">
-              <%= genre.name %>
-            </td>
-            <td class = "align-middle" style = "width: 150px">
-              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success form-control col-11 ml-2 p-1", style: "height: 35px" %>
-            </td>
-          </tr>
-
-        <% end %>
-      </tbody>
-
-    </table>
   </div>
 </div>
-
-

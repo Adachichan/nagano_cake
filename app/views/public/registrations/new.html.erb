@@ -5,99 +5,96 @@
   </div>
 
   <div class = "row">
-    <div class = "mt-3 mx-sm-0" style = "font-size:0.9rem">
+    <div class = "mt-4 mx-sm-0" style = "font-size:0.9rem">
 
       <%= form_with model: @customer, url: customer_registration_path do |f| %>
 
-        <table class = "table table-borderless" style = "width: 860px">
+        <div class = "d-flex align-items-center">
+          <div style= "width: 200px">名前</div>
+          <div style= "width: 70px">(性)</div>
+          <div style= "width: 260px">
+            <%= f.text_field :last_name, class: "form-control border-dark" %>
+          </div>
+          <div class = "ml-5" style= "width: 70px">(名)</div>
+          <div style = "width: 260px">
+            <%= f.text_field :first_name, class: "form-control border-dark" %>
+          </div>
+        </div>
 
-          <tr>
-            <td class = "align-middle" style= "width: 200px">名前</td>
-            <td class = "align-middle" style= "width: 70px">(性)</td>
-            <td style= "width: 260px">
-              <%= f.text_field :last_name, class: "form-control border-dark" %>
-            </td>
-            <td class = "align-middle" style= "width: 70px">(名)</td>
-            <td style= "width: 260px">
-              <%= f.text_field :first_name, class: "form-control border-dark" %>
-            </td>
-          </tr>
+        <div class = "d-flex align-items-center">
+          <div class = "mt-3" style= "width: 200px">フリガナ</div>
+          <div class = "mt-3" style= "width: 70px">(セイ)</div>
+          <div class = "mt-3" style= "width: 260px">
+            <%= f.text_field :last_name_kana, class: "form-control border-dark" %>
+          </div>
+          <div class = "mt-3 ml-5" style= "width: 70px">(メイ)</div>
+          <div class = "mt-3" style= "width: 260px">
+            <%= f.text_field :first_name_kana, class: "form-control border-dark" %>
+          </div>
+        </div>
 
-          <tr>
-            <td class = "pt-0 align-middle" style= "width: 200px">フリガナ</td>
-            <td class = "pt-0 align-middle" style= "width: 70px">(セイ)</td>
-            <td class = "pt-0" style= "width: 260px">
-              <%= f.text_field :last_name_kana, class: "form-control border-dark" %>
-            </td>
-            <td class = "pt-0 align-middle" style= "width: 70px">(メイ)</td>
-            <td class = "pt-0" style= "width: 260px">
-              <%= f.text_field :first_name_kana, class: "form-control border-dark" %>
-            </td>
-          </tr>
+        <div class = "d-flex align-items-center">
+          <div class = "mt-3" style= "width: 200px">メールアドレス</div>
+          <div class = "mt-3" style= "width: 70px"></div>
+          <div class = "mt-3" style= "width: 260px">
+            <%= f.text_field :email, class: "form-control border-dark" %>
+          </div>
+        </div>
 
-          <tr>
-            <td class = "pt-0 align-middle" style= "width: 200px">メールアドレス</td>
-            <td class = "pt-0" style= "width: 70px"></td>
-            <td class = "pt-0" style= "width: 260px">
-              <%= f.text_field :email, class: "form-control border-dark" %>
-            </td>
-          </tr>
+        <div class = "d-flex align-items-center">
+          <div class = "mt-3" style= "width: 200px">郵便番号(ハイフンなし)</div>
+          <div class = "mt-3" style= "width: 70px"></div>
+          <div class = "mt-3" style= "width: 260px">
+            <%= f.text_field :postal_code, class: "form-control border-dark" %>
+          </div>
+        </div>
 
-          <tr>
-            <td class = "pt-0 align-middle" style= "width: 200px">郵便番号(ハイフンなし)</td>
-            <td class = "pt-0" style= "width: 70px"></td>
-            <td class = "pt-0" style= "width: 260px">
-              <%= f.text_field :postal_code, class: "form-control border-dark" %>
-            </td>
-          </tr>
+        <div class = "d-flex align-items-center">
+          <div class = "mt-3" style= "width: 200px">住所</div>
+          <div class = "mt-3" style= "width: 70px"></div>
+          <div class = "mt-3" style= "width: 638px">
+            <%= f.text_field :address, class: "form-control border-dark" %>
+          </div>
+        </div>
 
-          <tr>
-            <td class = "pt-0 align-middle" style= "width: 200px">住所</td>
-            <td class = "pt-0" style= "width: 70px"></td>
-            <td class = "pt-0" colspan = "3">
-              <%= f.text_field :address, class: "form-control border-dark" %>
-            </td>
-          </tr>
+        <div class = "d-flex align-items-center">
+          <div class = "mt-3" style= "width: 200px">電話番号(ハイフンなし)</div>
+          <div class = "mt-3" style= "width: 70px"></div>
+          <div class = "mt-3" style= "width: 260px">
+            <%= f.text_field :telephone_number, class: "form-control border-dark" %>
+          </div>
+        </div>
 
-          <tr>
-            <td class = "pt-0 align-middle" style= "width: 200px">電話番号(ハイフンなし)</td>
-            <td class = "pt-0" style= "width: 70px"></td>
-            <td class = "pt-0" style= "width: 260px">
-              <%= f.text_field :telephone_number, class: "form-control border-dark" %>
-            </td>
-          </tr>
+        <div class = "d-flex align-items-center">
+          <div class = "mt-3" style= "width: 200px">パスワード(6文字以上)</div>
+          <div class = "mt-3" style= "width: 70px"></div>
+          <div class = "mt-3" style= "width: 260px">
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control border-dark" %>
+          </div>
+        </div>
 
-          <tr>
-            <td class = "pt-0 align-middle" style= "width: 200px">パスワード(6文字以上)</td>
-            <td class = "pt-0" style= "width: 70px"></td>
-            <td class = "pt-0" style= "width: 260px">
-              <%= f.password_field :password, autocomplete: "new-password", class: "form-control border-dark" %>
-            </td>
-          </tr>
+        <div class = "d-flex align-items-center">
+          <div class = "mt-3" style= "width: 200px">パスワード(確認用)</div>
+          <div class = "mt-3" style= "width: 70px"></div>
+          <div class = "mt-3" style= "width: 260px">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control border-dark" %>
+          </div>
+        </div>
 
-          <tr>
-            <td class = "pt-0 align-middle" style= "width: 200px">パスワード(確認用)</td>
-            <td class = "pt-0" style= "width: 70px"></td>
-            <td class = "pt-0" style= "width: 260px">
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control border-dark" %>
-            </td>
-          </tr>
-
-          <tr>
-            <td class = "pt-4" style= "width: 200px"></td>
-            <td class = "pt-4" style= "width: 70px"></td>
-            <td class = "pt-4" style= "width: 260px">
-              <%= f.submit "新規登録", class: "btn btn-success form-control col-8" %>
-            </td>
-          </tr>
-        </table>
+        <div class = "d-flex align-items-center">
+          <div class = "mt-4" style= "width: 200px"></div>
+          <div class = "mt-4" style= "width: 70px"></div>
+          <div class = "mt-4" style= "width: 260px">
+            <%= f.submit "新規登録", class: "btn btn-success form-control col-8" %>
+          </div>
+        </div>
 
       <% end %>
 
     </div>
   </div>
 
-  <div class = "h5 mt-2 bg-light text-black text-center" style = "width:260px">
+  <div class = "h5 mt-5 bg-light text-black text-center" style = "width:260px">
     &ensp;既に登録済みの方&ensp;
   </div>
 

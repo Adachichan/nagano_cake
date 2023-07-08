@@ -1,2 +1,27 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class = "container-xxl mx-auto mt-5" style = "width: 1320px">
+
+  <div class = "row">
+    <div class = "col-2">
+      今でしょ！
+    </div>
+
+    <div class = "col-10">
+
+      <div class = "row">
+
+        <% @item_list.each do |item| %>
+          <div class = "col-3">
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_item_image("200x200!") %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= paginate @item_list %>
+      </div>
+
+    </div>
+  </div>
+</div>

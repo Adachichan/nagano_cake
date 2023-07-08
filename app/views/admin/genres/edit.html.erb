@@ -11,18 +11,15 @@
 
     <%= form_with model: @genre, url: admin_genre_path do |f| %>
 
-      <table class = "table table-borderless" style= "width: 700px">
-
-        <tr>
-          <td class = "pt-0 align-middle" style = "width: 150px">ジャンル名</td>
-          <td class = "pt-0 pr-4" style = "width 345px">
-            <%= f.text_field :name, class: "form-control border-dark" %>
-          </td>
-          <td class = "pt-0 pl-5" style = "width: 205px">
-            <%= f.submit "変更を保存", class: "btn btn-success form-control font-weight-bold col-12" %>
-          </td>
-
-      </table>
+      <div class = "d-flex align-items-center">
+        <div style = "width: 150px">ジャンル名</div>
+        <div class = "mr-4" style = "width: 345px">
+          <%= f.text_field :name, class: "form-control border-dark" %>
+        </div>
+        <div class = "ml-5" style = "width: 150px">
+          <%= f.submit "変更を保存", class: "btn btn-success form-control font-weight-bold col-12" %>
+        </div>
+      </div>
 
     <% end %>
 
