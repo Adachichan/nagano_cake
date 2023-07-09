@@ -1,10 +1,6 @@
 class Public::ItemsController < ApplicationController
 
   def index
-    # @item_list = Item.page(params[:page]).per(8)
-    # @item_count = Item.count
-    # @genre_list = Genre.all
-
     @genre_list = Genre.all
 
     if params[:genre_id]
@@ -18,7 +14,6 @@ class Public::ItemsController < ApplicationController
 
     @item_list = all_item.where(is_sold: false).page(params[:page]).per(8)
     @item_count = all_item.where(is_sold: false).count
-
   end
 
   def show
