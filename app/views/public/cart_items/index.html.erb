@@ -1,2 +1,71 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class = "container">
+
+  <div class = "row d-flex justify-content-between mt-4">
+    <div class = "h4 ml-3 bg-light text-black text-center" style = "width:260px">
+      &ensp;ショッピングカート&ensp;
+    </div>
+
+    <div class = "mt-2">
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger form-control font-weight-bold p-1 mr-3", style: "width: 150px; height: 30px; font-size:0.8rem" %>
+    </div>
+  </div>
+
+
+
+  <div class = "row justify-content-center ml-0 mt-4">
+
+    <table class = "table table-bordered" style = "width: 1125px">
+
+      <thead class =  "bg-light" style = "height: 60px">
+        <tr>
+          <th class = "border border-dark align-middle" style = "width: 445px">商品名</th>
+          <th class = "border border-dark align-middle" style = "width: 170px">単価(税込)</th>
+          <th class = "border border-dark align-middle" style = "width: 170px">数量</th>
+          <th class = "border border-dark align-middle" style = "width: 170px">小計</th>
+          <th class = "border border-dark align-middle" style = "width: 170px"></th>
+        </tr>
+      </thead>
+
+      <tbody style = "height: 60px">
+        <% @cart_item_list.each do |cart_item| %>
+
+          <tr class>
+            <td class = "border border-dark align-middle" style = "width: 445px">
+              <%= image_tag cart_item.item.get_item_image("60x50!")  %>
+              <span class = "ml-3">
+                <%= cart_item.item.name %>
+              </span>
+            </td>
+
+            <td class = "border border-dark align-middle" style = "width: 170px">
+              <%= cart_item.item.with_tax_price.to_s(:delimited) %>
+            </td>
+
+            <td class = "border border-dark align-middle" style = "width: 170px">
+
+              <%= form_with model: cart_item, url: cart_item_path(cart_item.id) do |f| %>
+                <div class = "d-flex cart-item-order-count-select-design">
+                  <%= f.select :amount, *[1..10], prompt: cart_item.amount %>
+                  <%= f.submit "変更", class: "btn btn-success form-control font-weight-bold col-5 ml-3 px-0" %>
+                </div>
+              <% end %>
+
+            </td>
+
+            <td class = "border border-dark align-middle" style = "width: 170px">
+              <%= cart_item.subtotal.to_s(:delimited) %>
+            </td>
+
+            <td class = "border border-dark align-middle text-center" style = "width: 170px">
+              <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger form-control font-weight-bold col-9 p-1", style: "height: 30px; font-size:0.8rem" %>
+            </td>
+
+          </tr>
+
+        <% end %>
+      </tbody>
+
+    </table>
+
+  </div>
+</div>

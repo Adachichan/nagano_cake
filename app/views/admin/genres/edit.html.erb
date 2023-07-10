@@ -9,7 +9,7 @@
 <div class = "container ml-5">
   <div class = "mt-5 pt-3 mx-sm-0">
 
-    <%= form_with model: @genre, url: admin_genre_path do |f| %>
+    <%= form_with model: @genre, url: admin_genre_path(@genre.id) do |f| %>
 
       <div class = "d-flex align-items-center">
         <div style = "width: 150px">ジャンル名</div>

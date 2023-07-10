@@ -46,7 +46,7 @@
               <%= item.name %>
             </div>
             <div class = "mt-2 font-weight-bold">
-              <%= number_to_currency((item.price + item.price * 0.1).round, unit: "¥", strip_insignificant_zeros: true) %>
+              <%= number_to_currency(item.with_tax_price, unit: "¥", strip_insignificant_zeros: true) %>
             </div>
           </div>
 

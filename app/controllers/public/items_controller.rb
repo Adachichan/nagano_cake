@@ -18,6 +18,7 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @cart_item = CartItem.new
     @genre_list = Genre.all
   end
 

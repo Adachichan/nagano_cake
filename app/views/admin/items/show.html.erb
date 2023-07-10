@@ -44,7 +44,7 @@
           (税抜価格)
         </div>
         <div class = "mt-3" style = "width: 350px; font-size:1.0rem">
-          <%= (@item.price + @item.price * 0.1).round.to_s(:delimited) %>&nbsp;(<%= @item.price.round.to_s(:delimited) %>)&nbsp;円
+          <%= @item.with_tax_price.to_s(:delimited) %>&nbsp;(<%= @item.price.floor.to_s(:delimited) %>)&nbsp;円
         </div>
       </div>
 
