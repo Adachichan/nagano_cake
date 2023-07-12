@@ -1,5 +1,8 @@
 class Public::OrdersController < ApplicationController
+
   def new
+    @order = Order.new
+    @registered_address = current_customer.delivery_addresses
   end
 
   def confirm
@@ -16,4 +19,5 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
+
 end

@@ -4,12 +4,32 @@ Rails.application.routes.draw do
   # public routes
 
   scope module: :public do
+    # home
     root to: 'homes#top'
     get 'about', to: 'homes#about', as: 'about'
-  end
 
-  scope module: :public do
+    # item
     resources :items, only: [:index, :show]
+
+    # customer
+    get 'customers/my_page', to: 'customers#show', as: 'public_customer_show'
+    get 'customers/information/edit', to: 'customers#edit', as: 'public_customer_edit'
+    patch 'customers/information', to: 'customers#update', as: 'public_customer_update'
+    get 'customers/confirm', to: 'customers#confirm', as: 'public_customer_confirm'
+    patch 'customers/withdraw', to: 'customers#withdraw', as: 'public_customer_withdraw'
+
+    # cart_item
+    delete 'cart_items/destroy_all', to: 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+
+    # order
+    post 'orders/confirm', to: 'orders#confirm', as: 'confirm_order'
+    get 'orders/complete', to: 'orders#complete', as: 'complete_order'
+    resources :orders, only: [:new, :create, :index, :show]
+
+    # delivery_address
+    resources :delivery_addresses, only: [:index, :create, :destroy, :edit, :update]
+
   end
 
   # URL：/customers/sign_in
@@ -17,29 +37,6 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
-  scope module: :public do
-    get 'customers/my_page', to: 'customers#show', as: 'public_customer_show'
-    get 'customers/information/edit', to: 'customers#edit', as: 'public_customer_edit'
-    patch 'customers/information', to: 'customers#update', as: 'public_customer_update'
-    get 'customers/confirm', to: 'customers#confirm', as: 'public_customer_confirm'
-    patch 'customers/withdraw', to: 'customers#withdraw', as: 'public_customer_withdraw'
-  end
-
-  scope module: :public do
-    resources :cart_items, only: [:index, :update, :destroy, :create]
-    delete 'cart_item/destroy_all', to: 'cart_items#destroy_all'
-  end
-
-  scope module: :public do
-    resources :orders, only: [:new, :create, :index, :show]
-    post 'orders/confirm', to: 'orders#confirm', as: 'confirm_order'
-    get 'orders/complete', to: 'orders#complete', as: 'complete_order'
-  end
-
-  scope module: :public do
-    resources :delivery_addresses, only: [:index, :create, :destroy, :edit, :update]
-  end
 
   #---------------------------------------------------------------------------------------
   # admin routes
@@ -50,26 +47,22 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+    # home
     root to: 'homes#top'
-  end
 
-  namespace :admin do
+    # item
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-  end
 
-  namespace :admin do
+    # customer
     resources :customers, only: [:index, :show, :edit, :update]
-  end
 
-  namespace :admin do
+    # order
     resources :orders, only: [:show, :update]
-  end
 
-  namespace :admin do
+    # order_item
     resources :order_items, only: [:update]
-  end
 
-  namespace :admin do
+    # genre
     resources :genres, only: [:index, :create, :edit, :update]
   end
 

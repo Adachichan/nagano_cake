@@ -1,2 +1,47 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class = "container">
+
+  <div class = "h4 mt-4 bg-light text-black text-center" style = "width: 260px">
+    &ensp;注文情報入力&ensp;
+  </div>
+
+</div>
+
+<div class = "container ml-5 pl-5">
+  <div class = "row mt-4 ml-5 pl-5">
+
+    <%= form_with model: @order, url: orders_path do |f| %>
+
+      <div class = "h4 font-weight-bold" style = "width: 200px">
+        支払方法
+      </div>
+
+      <div class = "ml-4">
+        <div style = "width: 300px">
+          <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
+          <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card], style: "font-size:1.2rem" %>
+        </div>
+        <div>
+          <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+          <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer], style: "font-size:1.2rem" %>
+        </div>
+      </div>
+
+      <div class = "h4 font-weight-bold mt-3" style = "width: 200px">
+        お届け先
+      </div>
+
+      <div class = "ml-4">
+        <div style = "width: 1000px;">
+          <%= '〒' + current_customer.postal_code + '　' + current_customer.address %></br>
+          <%= current_customer.last_name + current_customer.first_name %>
+        </div>
+      </div>
+      <div class = "ml-4">
+        <%= f.select :address_id, options_from_collection_for_select(@registered_address, :id, :delivery_address_display) %>
+      </div>
+
+
+    <% end %>
+
+  </div>
+</div>
