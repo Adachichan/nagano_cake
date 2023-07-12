@@ -6,17 +6,15 @@
     </div>
 
     <div class = "mt-2">
-      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger form-control font-weight-bold p-1 mr-3", style: "width: 150px; height: 30px; font-size:0.8rem" %>
+      <%= link_to "カートを空にする", cart_item_destroy_all_path, method: :delete, class: "btn btn-danger form-control font-weight-bold p-1 mr-3", style: "width: 150px; height: 30px; font-size:0.8rem" %>
     </div>
   </div>
-
-
 
   <div class = "row justify-content-center ml-0 mt-4">
 
     <table class = "table table-bordered" style = "width: 1125px">
 
-      <thead class =  "bg-light" style = "height: 60px">
+      <thead class = "bg-light" style = "height: 60px">
         <tr>
           <th class = "border border-dark align-middle" style = "width: 445px">商品名</th>
           <th class = "border border-dark align-middle" style = "width: 170px">単価(税込)</th>
@@ -25,6 +23,7 @@
           <th class = "border border-dark align-middle" style = "width: 170px"></th>
         </tr>
       </thead>
+
 
       <tbody style = "height: 60px">
         <% @cart_item_list.each do |cart_item| %>
@@ -45,7 +44,7 @@
 
               <%= form_with model: cart_item, url: cart_item_path(cart_item.id) do |f| %>
                 <div class = "d-flex cart-item-order-count-select-design">
-                  <%= f.select :amount, *[1..10], prompt: cart_item.amount %>
+                  <%= f.select :amount, *[1..50], prompt: cart_item.amount %>
                   <%= f.submit "変更", class: "btn btn-success form-control font-weight-bold col-5 ml-3 px-0" %>
                 </div>
               <% end %>
@@ -62,10 +61,33 @@
 
           </tr>
 
+          <% @total_price += cart_item.subtotal %>
+
         <% end %>
       </tbody>
 
     </table>
+  </div>
+
+  <div class = "row d-flex justify-content-between mt-3">
+
+    <div class = "ml-5">
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary form-control font-weight-bold p-1", style: "width: 150px; height: 30px; font-size:0.8rem" %>
+    </div>
+
+    <div>
+      <table class = "table table-bordered" style = "width: 340px">
+        <tr>
+          <td class = "border border-dark align-middle bg-light" style = "width: 170px">合計金額</td>
+          <td class = "border border-dark align-middle", style = "width: 170px"><%= @total_price.to_s(:delimited) %></td>
+        </tr>
+      </table>
+    </div>
 
   </div>
+
+  <div class = "row justify-content-center mt-5">
+     <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success form-control font-weight-bold", style: "width: 200px; height: 42px; font-size:1.2rem" %>
+  </div>
+
 </div>
