@@ -1,2 +1,22 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<div class = "container">
+
+  <div class = "h4 mt-4 bg-light text-black text-center" style = "width:260px">
+    &ensp;注文情報確認&ensp;
+  </div>
+
+  <% @cart_item_list.each do |cart_item| %>
+
+    <%= cart_item.item.name %>
+    <%= cart_item.item.with_tax_price.to_s(:delimited) %>
+    <%= cart_item.amount %>
+    <%= cart_item.subtotal.to_s(:delimited) %>
+
+  <% end %>
+
+  <%= @order.payment_method_i18n %>
+  <%= @order.postal_code %>
+  <%= @order.address %>
+  <%= @order.name %>
+
+
+</div>
