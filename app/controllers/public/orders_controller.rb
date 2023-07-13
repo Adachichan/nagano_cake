@@ -12,6 +12,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    
+    
+    
+    
   end
 
   def index
@@ -19,5 +23,9 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
+  
+  private
+  
+  
 
 end
