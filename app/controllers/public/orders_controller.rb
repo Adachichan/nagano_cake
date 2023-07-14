@@ -26,6 +26,8 @@ class Public::OrdersController < ApplicationController
 
     end
 
+    @total_price = 0
+    @order.postage = 800
     @order.save
 
   end
@@ -46,7 +48,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :total_price)
   end
 
 
