@@ -26,9 +26,8 @@ class Public::OrdersController < ApplicationController
 
     end
 
-    @total_price = 0
     @order.postage = 800
-    @order.save
+    @total_price = 0
 
   end
 
@@ -36,6 +35,16 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
+
+    # 注文詳細モデルにカート内商品の情報を保存
+
+
+
+
+    # カート内商品の情報をすべて削除
 
   end
 
@@ -48,7 +57,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :total_price)
+    params.require(:order).permit(:total_price, :postage, :payment_method, :postal_code, :address, :name, :order_status)
   end
 
 
