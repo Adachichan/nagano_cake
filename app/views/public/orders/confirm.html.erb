@@ -8,71 +8,80 @@
 
 <div class = "container-xxl ml-5 mt-4" style = "width: 1320px">
 
-  <div class = "row d-flex justify-content-between ml-5">
-    <table class = "table table-bordered" style = "width: 900px">
+  <div class = "row ml-5">
+    <div class = "col-8">
 
-      <thead class =  "bg-light">
-        <tr>
-          <th class = "p-2 border-dark" style = "width: 450px">商品名</th>
-          <th class = "p-2 border-dark" style = "width: 150px">単価(税込)</th>
-          <th class = "p-2 border-dark" style = "width: 150px">数量</th>
-          <th class = "p-2 border-dark" style = "width: 150px">小計</th>
-        </tr>
-      </thead>
+      <table class = "table table-bordered" style = "width: 880px">
 
-      <tbody>
-        <% @cart_item_list.each do |cart_item| %>
-
-          <tr class>
-            <td class = "border-dark align-middle" style = "width: 450px">
-              <%= image_tag cart_item.item.get_item_image("60x50!")  %>
-              <span class = "ml-3">
-                <%= cart_item.item.name %>
-              </span>
-            </td>
-
-            <td class = "border-dark align-middle" style = "width: 150px">
-              <%= cart_item.item.with_tax_price.to_s(:delimited) %>
-            </td>
-
-            <td class = "border-dark align-middle" style = "width: 150px">
-              <%= cart_item.amount %>
-            </td>
-
-            <td class = "border-dark align-middle" style = "width: 150px">
-              <%= cart_item.subtotal.to_s(:delimited) %>
-            </td>
+        <thead class =  "bg-light" style = "height: 60px">
+          <tr>
+            <th class = "p-2 border-dark" style = "width: 430px">商品名</th>
+            <th class = "p-2 border-dark" style = "width: 150px">単価(税込)</th>
+            <th class = "p-2 border-dark" style = "width: 150px">数量</th>
+            <th class = "p-2 border-dark" style = "width: 150px">小計</th>
           </tr>
+        </thead>
 
-          <% @total_price += cart_item.subtotal %>
+        <tbody>
+          <% @cart_item_list.each do |cart_item| %>
 
-        <% end %>
-      </tbody>
+            <tr style = "height: 60px">
+              <td class = "border-dark align-middle" style = "width: 430px">
+                <%= image_tag cart_item.item.get_item_image("60x50!")  %>
+                <span class = "ml-3">
+                  <%= cart_item.item.name %>
+                </span>
+              </td>
 
-    </table>
+              <td class = "border-dark align-middle" style = "width: 150px">
+                <%= cart_item.item.with_tax_price.to_s(:delimited) %>
+              </td>
 
-    <table class = "table table-bordered" style = "width: 300px; height: 200px">
+              <td class = "border-dark align-middle" style = "width: 150px">
+                <%= cart_item.amount %>
+              </td>
 
-      <tr>
-        <td class = "p-2 border-dark align-middle bg-light" style = "width: 150px">送料</td>
-        <td class = "p-2 border-dark align-middle" style= "width: 150px">
-          <%= @order.postage.to_s(:delimited) %>
-        </td>
-      </tr>
+              <td class = "border-dark align-middle" style = "width: 150px">
+                <%= cart_item.subtotal.to_s(:delimited) %>
+              </td>
+            </tr>
 
-      <tr>
-        <td class = "p-2 border-dark align-middle bg-light" style = "width: 150px">合計金額</td>
-        <td class = "p-2 border-dark align-middle", style = "width: 150px"><%= @total_price.to_s(:delimited) %></td>
-        </td>
-      </tr>
+            <% @total_price += cart_item.subtotal %>
 
-      <tr>
-        <td class = "p-2 border-dark align-middle bg-light" style = "width: 150px">請求金額</td>
-        <td class = "p-2 border-dark align-middle", style = "width: 150px"><%= (@order.postage + @total_price).to_s(:delimited) %></td>
-        </td>
-      </tr>
+          <% end %>
+        </tbody>
 
-    </table>
+      </table>
+
+    </div>
+
+    <div class = "col-1"></div>
+
+    <div class = "col-3">
+      <table class = "table table-bordered" style = "width: 300px">
+
+        <tr style = "height: 60px">
+          <td class = "p-2 border-dark align-middle bg-light" style = "width: 150px">送料</td>
+          <td class = "p-2 border-dark align-middle" style= "width: 150px">
+            <%= @order.postage.to_s(:delimited) %>
+          </td>
+        </tr>
+
+        <tr style = "height: 60px">
+          <td class = "p-2 border-dark align-middle bg-light" style = "width: 150px">合計金額</td>
+          <td class = "p-2 border-dark align-middle", style = "width: 150px"><%= @total_price.to_s(:delimited) %></td>
+          </td>
+        </tr>
+
+        <tr style = "height: 60px">
+          <td class = "p-2 border-dark align-middle bg-light" style = "width: 150px">請求金額</td>
+          <td class = "p-2 border-dark align-middle", style = "width: 150px"><%= (@order.postage + @total_price).to_s(:delimited) %></td>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
   </div>
 
   <div class = "mt-4 ml-5">
