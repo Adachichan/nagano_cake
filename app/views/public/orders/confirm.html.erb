@@ -102,7 +102,6 @@
       <%= f.hidden_field :postal_code %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :name %>
-      <%= f.hidden_field :order_status, :value => Order.order_statuses.key(0) %>
       <%= f.submit "注文を確定する", class: "btn btn-success form-control font-weight-bold", style: "width: 150px; height: 40px" %>
     <% end %>
 

@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2023_07_04_121701) do
     t.integer "item_id", null: false
     t.integer "purchase_price", null: false
     t.integer "amount", null: false
-    t.integer "product_status", null: false
+    t.integer "product_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2023_07_04_121701) do
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "name", null: false
-    t.integer "order_status", null: false
+    t.integer "order_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -40,11 +40,20 @@ class Public::OrdersController < ApplicationController
     @order.save
 
     # 注文詳細モデルにカート内商品の情報を保存
+    cart_item_list = current_customer.cart_items
 
-
-
+    cart_item_list.each do |cart_item|
+      @order_item = OrderItem.new
+      @order_item.order_id = @order.id
+      @order_item.item_id = cart_item.item_id
+      @order_item.purchase_price = (cart_item.item.price * 1.1).floor
+      @order_item.amount = cart_item.amount
+      @order_item.save
+    end
 
     # カート内商品の情報をすべて削除
+    current_customer.cart_items.destroy_all
+    redirect_to complete_order_path
 
   end
 
@@ -57,7 +66,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:total_price, :postage, :payment_method, :postal_code, :address, :name, :order_status)
+    params.require(:order).permit(:total_price, :postage, :payment_method, :postal_code, :address, :name)
   end
 
 
