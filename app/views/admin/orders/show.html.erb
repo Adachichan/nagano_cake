@@ -95,6 +95,36 @@
       </table>
 
     </div>
+
+    <div class = "col-2"></div>
+
+    <div class = "col-2 px-0 mt-auto">
+      <table class = "table table-borderless mb-0" style = "width: 220px">
+
+        <tr style = "height: 30px">
+          <td class = "px-0 py-2 align-middle font-weight-bold" style = "width: 120px">商品合計</td>
+          <td class = "px-0 py-2 align-middle" style = "width: 100px">
+            <%= @order.total_price.to_s(:delimited) %>円
+          </td>
+        </tr>
+
+        <tr style = "height: 30px">
+          <td class = "px-0 py-2 align-middle font-weight-bold" style = "width: 120px">送料</td>
+          <td class = "px-0 py-2 align-middle", style = "width: 100px">
+            <%= @order.postage.to_s(:delimited) %>円
+          </td>
+        </tr>
+
+        <tr style = "height: 30px">
+          <td class = "px-0 py-2 align-middle font-weight-bold" style = "width: 120px">請求金額合計</td>
+          <td class = "px-0 py-2 align-middle font-weight-bold" style = "width: 100px">
+            <%= (@order.total_price + @order.postage).to_s(:delimited) %>円
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
   </div>
 
 </div>
