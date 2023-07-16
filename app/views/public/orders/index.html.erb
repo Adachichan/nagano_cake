@@ -1,2 +1,72 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+<div class = "container">
+
+  <div class = "h4 mt-4 bg-light text-black text-center" style = "width:260px">
+    &ensp;注文履歴一覧&ensp;
+  </div>
+
+</div>
+
+<div class = "container-xxl ml-5 pl-5" style = "width: 1320px">
+
+  <div class = "row mt-4 ml-5 pl-5">
+
+    <table class = "table table-bordered" style = "width: 1320px">
+
+      <thead class = "bg-light" style = "height: 40px">
+        <tr>
+          <th class = "h6 border border-dark align-middle" style = "width: 100px; font-size: 0.9rem">注文日</th>
+          <th class = "h6 border border-dark align-middle" style = "width: 470px; font-size: 0.9rem">配送先</th>
+          <th class = "h6 border border-dark align-middle" style = "width: 300px; font-size: 0.9rem">注文商品</th>
+          <th class = "h6 border border-dark align-middle" style = "width: 150px; font-size: 0.9rem">支払金額</th>
+          <th class = "h6 border border-dark align-middle" style = "width: 150px; font-size: 0.9rem">ステータス</th>
+          <th class = "h6 border border-dark align-middle" style = "width: 150px; font-size: 0.9rem">注文詳細</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @order_list.each do |order| %>
+
+          <tr>
+            <td class = "py-1 border border-dark align-middle" style = "width: 100px; font-size: 0.9rem">
+              <%= order.created_at.strftime("%Y/%-m/%-d") %>
+            </td>
+
+            <td class = "py-1 border border-dark align-middle" style = "width: 470px; font-size: 0.9rem">
+              <%= '〒' + order.postal_code %></br>
+              <%= order.address %></br>
+              <%= order.name %>
+            </td>
+
+            <td class = "py-1 border border-dark align-middle" style = "width: 300px; font-size: 0.9rem">
+              <% order.order_items.each do |order_item| %>
+                <div>
+                  <%= order_item.item.name %>
+                </div>
+              <% end %>
+            </td>
+
+            <td class = "py-1 border border-dark align-middle text-center" style = "width: 150px; font-size: 0.9rem">
+              <%= (order.total_price + order.postage).to_s(:delimited) %>円
+            </td>
+
+            <td class = "py-1 border border-dark align-middle text-center" style = "width: 150px; font-size: 0.9rem">
+              <%= order.order_status_i18n %>
+            </td>
+
+            <td class = "py-1 border border-dark align-middle" style = "width: 150px; font-size: 0.9rem">
+            </td>
+
+          </tr>
+
+        <% end %>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+
+
+

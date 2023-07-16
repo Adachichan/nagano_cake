@@ -60,6 +60,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @order_list = current_customer.orders.order(created_at: :desc)
   end
 
   def show
@@ -70,6 +71,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:total_price, :postage, :payment_method, :postal_code, :address, :name)
   end
-
 
 end
