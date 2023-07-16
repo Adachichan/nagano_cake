@@ -1,2 +1,75 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class = "container">
+
+  <% unless params[:customer_id] %>
+    <div class = "h4 mt-4 bg-light text-black text-center" style = "width:260px">
+      &ensp;注文履歴一覧&ensp;
+    </div>
+
+  <% else %>
+    <div class = "h4 mt-4 bg-light text-black text-center" style = "width:380px">
+      &ensp;<%= @customer.last_name + @customer.first_name %>さんの注文履歴&ensp;
+    </div>
+
+  <% end %>
+
+  <div class = " row justify-content-center mt-4" style = "font-size:0.9rem">
+
+    <% unless params[:customer_id] %>
+        <table class = "table" style = "width: 1000px">
+
+    <% else %>
+        <table class = "table" style = "width: 750px">
+
+    <% end %>
+
+      <thead class =  "bg-light">
+        <tr>
+          <th class = "p-2" style = "width: 200px">購入日時</th>
+
+          <% unless params[:customer_id] %>
+            <th class = "p-2" style = "width: 250px">購入者</th>
+
+          <% end %>
+
+          <th class = "p-2" style = "width: 250px">注文個数</th>
+          <th class = "p-2" style = "width: 300px">注文ステータス</th>
+        </tr>
+      </thead>
+
+       <tbody>
+         <% @order_list.each do |order| %>
+
+          <tr class = "border-bottom">
+            <td class = "align-middle" style = "width: 200px">
+              <%= link_to order.created_at.strftime("%Y/%-m/%-d %H:%M:%S"),admin_order_path(order.id), class: "text-dark" %>
+            </td>
+
+            <% unless params[:customer_id] %>
+              <td class = "align-middle" style = "width: 250px">
+                <%= link_to order.customer.last_name + order.customer.first_name,admin_root_path(customer_id: order.customer_id), class: "text-dark" %>
+              </td>
+
+            <% end %>
+
+            <td class = "align-middle" style = "width: 250px">
+              <%= order.order_items.sum(:amount) %>
+            </td>
+            <td class = "align-middle" style = "width: 300px">
+              <%= order.order_status_i18n %>
+            </td>
+          </tr>
+
+        <% end %>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td class = "align-middle"  colspan = "4">
+            <%= paginate @order_list %>
+          </td>
+        </tr>
+      </tfoot>
+
+    </table>
+  </div>
+</div>

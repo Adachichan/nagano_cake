@@ -1,5 +1,7 @@
 class Public::ItemsController < ApplicationController
 
+  before_action :authenticate_customer!
+
   def index
     @genre_list = Genre.all
 
