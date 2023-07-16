@@ -53,7 +53,8 @@
               <%= order.order_status_i18n %>
             </td>
 
-            <td class = "py-1 border border-dark align-middle" style = "width: 150px; font-size: 0.9rem">
+            <td class = "py-1 border border-dark align-middle text-center" style = "width: 150px; font-size: 0.9rem">
+              <%= link_to "表示する", order_path(order.id), class: "btn btn-primary form-control font-weight-bold col-10 p-1", style: "height: 33px; font-size:0.9rem" %>
             </td>
 
           </tr>
