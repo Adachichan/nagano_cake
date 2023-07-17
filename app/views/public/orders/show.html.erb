@@ -102,32 +102,29 @@
           </tr>
         </thead>
 
-        <tbody style = "height: 50px">
+        <tbody>
           <% @order.order_items.each do |order_item| %>
 
             <tr>
-              <td class = "py-1 border border-dark align-middle" style = "width: 650px">
+              <td class = "py-1 border border-dark align-middle" style = "width: 650px; height: 50px">
                 <%= order_item.item.name %>
               </td>
 
-              <td class = "py-1 border border-dark align-middle" style = "width: 150px">
+              <td class = "py-1 border border-dark align-middle" style = "width: 150px; height: 50px">
                 <%= order_item.purchase_price.to_s(:delimited) %>
               </td>
 
-              <td class = "py-1 border border-dark align-middle" style = "width: 100px">
+              <td class = "py-1 border border-dark align-middle" style = "width: 100px; height: 50px">
                 <%= order_item.amount.to_s(:delimited) %>
               </td>
 
-              <td class = "py-1 border border-dark align-middle" style = "width: 100px">
+              <td class = "py-1 border border-dark align-middle" style = "width: 100px; height: 50px">
                 <%= order_item.subtotal.to_s(:delimited) %>
               </td>
 
             </tr>
           <% end %>
         </tbody>
-
-
-
 
     </div>
   </div>
