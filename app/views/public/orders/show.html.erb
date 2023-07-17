@@ -1,2 +1,115 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class = "container">
+
+  <div class = "h4 mt-4 bg-light text-black text-center" style = "width:260px">
+    &ensp;注文履歴詳細&ensp;
+  </div>
+
+</div>
+
+<div class = "container-xxl ml-5 pl-5" style = "width: 1320px">
+
+  <div class = "row mt-4 ml-5 pl-5">
+    <div class = "col-8 px-0">
+
+      <div class = "h5 text-black font-weight-bold" style = "width:260px">
+        注文情報
+      </div>
+
+      <table class = "table table-bordered mt-3" style = "width: 770px">
+
+        <tr style = "height: 50px">
+          <td class = "p-2 border-dark align-middle bg-light" style = "width: 150px">注文日</td>
+          <td class = "p-2 border-dark align-middle" style= "width: 620px">
+            <%= @order.created_at.strftime("%Y/%-m/%-d") %>
+          </td>
+        </tr>
+
+        <tr>
+          <td class = "p-2 border-dark align-middle bg-light" style = "width: 150px">配送先</td>
+          <td class = "p-2 border-dark align-middle" style= "width: 620px">
+            <%= '〒' + @order.postal_code %></br>
+            <%= @order.address %></br>
+            <%= @order.name %>
+          </td>
+        </tr>
+
+        <tr style = "height: 50px">
+          <td class = "p-2 border-dark align-middle bg-light" style = "width: 150px">支払方法</td>
+          <td class = "p-2 border-dark align-middle" style= "width: 620px">
+            <%= @order.payment_method_i18n %>
+          </td>
+        </tr>
+
+        <tr style = "height: 50px">
+          <td class = "p-2 border-dark align-middle bg-light" style = "width: 150px">ステータス</td>
+          <td class = "p-2 border-dark align-middle" style= "width: 620px">
+            <%= @order.order_status_i18n %>
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
+
+    <div class = "col-4 px-0">
+      <div class = "h5 text-black font-weight-bold" style = "width:260px">
+        請求情報
+      </div>
+
+      <table class = "table table-bordered mt-3" style = "width: 350px">
+
+        <tr style = "height: 50px">
+          <td class = "p-2 border-dark align-middle bg-light" style = "width: 200px">商品合計</td>
+          <td class = "p-2 border-dark align-middle" style= "width: 150px">
+            <%= @order.total_price.to_s(:delimited) %>
+          </td>
+        </tr>
+
+        <tr style = "height: 50px">
+          <td class = "p-2 border-dark align-middle bg-light" style = "width: 200px">配送料</td>
+          <td class = "p-2 border-dark align-middle" style= "width: 150px">
+            <%= @order.postage.to_s(:delimited) %>
+          </td>
+        </tr>
+
+        <tr style = "height: 50px">
+          <td class = "p-2 border-dark align-middle bg-light font-weight-bold" style = "width: 200px">ご請求額</td>
+          <td class = "p-2 border-dark align-middle" style= "width: 150px">
+            <%= (@order.total_price + @order.postage).to_s(:delimited) %>
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
+  </div>
+
+  <div class = "row mt-4 ml-5 pl-5">
+    <div class = "px-0">
+
+      <table class = "table table-bordered" style = "width: 1000px">
+
+        <thead class = "bg-light" style = "height: 50px">
+          <tr>
+            <th class = "h6 border border-dark align-middle" style = "width: 650px">商品</th>
+            <th class = "h6 border border-dark align-middle" style = "width: 150px">単価（税込）</th>
+            <th class = "h6 border border-dark align-middle" style = "width: 100px">個数</th>
+            <th class = "h6 border border-dark align-middle" style = "width: 100px">小計</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @order.order_items.each do |order_item| %>
+
+
+
+          <% end %>
+        </tbody>
+
+
+
+
+    </div>
+  </div>
+
+</div>
