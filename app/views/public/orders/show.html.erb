@@ -87,7 +87,11 @@
   <div class = "row mt-4 ml-5 pl-5">
     <div class = "px-0">
 
-      <table class = "table table-bordered" style = "width: 1000px">
+      <div class = "h5 text-black font-weight-bold" style = "width:260px">
+        注文内容
+      </div>
+
+      <table class = "table table-bordered mt-3" style = "width: 1000px">
 
         <thead class = "bg-light" style = "height: 50px">
           <tr>
@@ -98,11 +102,27 @@
           </tr>
         </thead>
 
-        <tbody>
+        <tbody style = "height: 50px">
           <% @order.order_items.each do |order_item| %>
 
+            <tr>
+              <td class = "py-1 border border-dark align-middle" style = "width: 650px">
+                <%= order_item.item.name %>
+              </td>
 
+              <td class = "py-1 border border-dark align-middle" style = "width: 150px">
+                <%= order_item.purchase_price.to_s(:delimited) %>
+              </td>
 
+              <td class = "py-1 border border-dark align-middle" style = "width: 100px">
+                <%= order_item.amount.to_s(:delimited) %>
+              </td>
+
+              <td class = "py-1 border border-dark align-middle" style = "width: 100px">
+                <%= order_item.subtotal.to_s(:delimited) %>
+              </td>
+
+            </tr>
           <% end %>
         </tbody>
 
