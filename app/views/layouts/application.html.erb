@@ -16,6 +16,15 @@
     <header>
       <nav class = "navbar navbar-expand-lg navbar-light border-secondary border-bottom pb-3" style = "background-color: white">
         <%= link_to "ながのCAKE", root_path, class: "navbar-brand border border-dark px-5 py-1 ml-4" %>
+
+        <div class = "ml-5 pl-5 mt-3">
+
+          <% if customer_signed_in? %>
+            ようこそ、<%= current_customer.last_name %>さん！
+          <% end %>
+
+        </div>
+
         <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbarNavDropdown" aria-controls = "navbarNavDropdown" aria-expanded = "false" aria-label = "Toggle navigation">
           <span class = "navbar-toggler-icon"></span>
         </button>
