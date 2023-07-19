@@ -1,7 +1,13 @@
 <div class = "container">
 
-  <div class = "h4 mt-4 bg-light text-black text-center" style = "width:150px">
-    &ensp;商品一覧&ensp;
+  <div class = "row d-flex justify-content-between mt-4">
+    <div class = "h4 mt-4 bg-light text-black text-center" style = "width:150px">
+      &ensp;商品一覧&ensp;
+    </div>
+
+    <div class = "mt-2 mr-4">
+      <%= button_to "＋", new_admin_item_path, class: "text-secondary font-weight-bold border border-muted bg-white", style: "font-size: 1.8rem; width: 50px; height: 50px; border-radius: 50%" %>
+    </div>
   </div>
 
   <div class = "row justify-content-center mt-4 ml-0" style = "font-size:0.9rem">
